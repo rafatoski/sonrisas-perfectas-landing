@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FormularioRegistro from '../components/FormularioRegistro.astro';
+---
+
+<Layout title="Sonrisas Perfectas | Clínica Odontológica en Cali">
+  <!-- Hero Section -->
+  <section class="relative bg-[#075985] overflow-hidden">
+    <!-- Efedctos de fondo -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute top-0 -left-4 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
+      <div class="absolute bottom-0 -right-4 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto px-4 py-16 md:py-24 lg:py-32">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <!-- Columna 1: Contenido -->
+        <div class="text-white space-y-8">
+          <div>
+            <span class="inline-block bg-primary-500/20 text-primary-200 px-4 py-1.5 rounded-full text-sm font-semibold tracking-wide uppercase mb-6">
+              ✨ Odontología de Vanguardia en Cali
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-[1.1] tracking-tight mb-6">
+              La Sonrisa de tus <span class="text-primary-300">Sueños</span> es Posible
+            </h1>
+            <p class="text-xl md:text-2xl text-primary-100 max-w-xl leading-relaxed">
+              Recupera tu seguridad con tratamientos personalizados y tecnología de última generación. **Primera valoración sin costo.**
+            </p>
+          </div>
+
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center gap-3">
+              <div class="flex-shrink-0 w-6 h-6 bg-primary-400/20 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-lg">Diseño de Sonrisa 100% Personalizado</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="flex-shrink-0 w-6 h-6 bg-primary-400/20 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-lg">Financiamiento Flexible y Planes de Pago</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="flex-shrink-0 w-6 h-6 bg-primary-400/20 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <span class="text-lg">Especialistas con +15 Años de Experiencia</span>
+            </div>
+          </div>
+
+          <!-- Social Proof Pequeño -->
+          <div class="pt-4 flex items-center gap-4">
+            <div class="flex -space-x-2">
+              <div class="w-10 h-10 rounded-full border-2 border-primary-600 bg-gray-200 flex items-center justify-center overflow-hidden">
+                <span class="text-[10px] text-gray-600">User</span>
+              </div>
+              <div class="w-10 h-10 rounded-full border-2 border-primary-600 bg-gray-300 flex items-center justify-center overflow-hidden">
+                <span class="text-[10px] text-gray-600">User</span>
+              </div>
+              <div class="w-10 h-10 rounded-full border-2 border-primary-600 bg-gray-400 flex items-center justify-center overflow-hidden">
+                <span class="text-[10px] text-gray-600">User</span>
+              </div>
+            </div>
+            <p class="text-sm text-primary-100 italic">
+              "Mi vida cambió por completo tras el tratamiento"
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna 2: Formulario -->
+        <div class="relative lg:ml-auto w-full max-w-md">
+          <div class="absolute -inset-1 bg-gradient-to-r from-primary-400 to-indigo-500 rounded-3xl blur opacity-25"></div>
+          <div class="relative">
+            <FormularioRegistro isCompact={true} showHeading={false} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tratamientos Section -->
+  <section id="tratamientos" class="py-24 px-4 bg-white">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+          Nuestros Tratamientos
+        </h2>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Resultados naturales con tecnología de punta y el mejor equipo médico.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Blanqueamiento -->
+        <div class="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-primary-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
+          <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Blanqueamiento</h3>
+          <p class="text-gray-600 leading-relaxed">Recupera el brillo de tus dientes con resultados visibles desde la primera sesión.</p>
+        </div>
+
+        <!-- Ortodoncia -->
+        <div class="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-primary-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
+          <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Invisalign</h3>
+          <p class="text-gray-600 leading-relaxed">Alinea tu sonrisa de forma invisible, rápida y sin brackets convencionales.</p>
+        </div>
+
+        <!-- Implantes -->
+        <div class="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-primary-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
+          <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-bold text-gray-900 mb-3">Implantes</h3>
+          <p class="text-gray-600 leading-relaxed">Soluciones permanentes para recuperar la funcionalidad y estética completa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary-600">
+    <div class="max-w-4xl mx-auto px-4 text-center text-white">
+      <h2 class="text-3xl md:text-5xl font-bold mb-8 italic">"La sonrisa es la curva que todo lo endereza"</h2>
+      <a href="#registro" class="inline-block bg-white text-primary-700 px-10 py-5 rounded-full font-black text-xl hover:bg-primary-50 transition transform hover:-translate-y-1 shadow-2xl">
+        ¡QUIERO AGENDAR MI CITA YA!
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12 px-4 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="text-center md:text-left">
+        <h3 class="text-2xl font-bold mb-2">Sonrisas Perfectas</h3>
+        <p class="text-gray-400">Transformando vidas un sonrisa a la vez.</p>
+      </div>
+      <div class="text-center md:text-right">
+        <p class="text-gray-400 text-sm">
+          © 2026 Cali, Colombia | Clínica Dental
+        </p>
+      </div>
+    </div>
+  </footer>
+</Layout>

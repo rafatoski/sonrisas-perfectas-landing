@@ -1,0 +1,234 @@
+---
+interface Props {
+  isCompact?: boolean;
+  showHeading?: boolean;
+}
+
+const { isCompact = false, showHeading = true } = Astro.props;
+const WEBHOOK_URL = "https://n8ntest.neuromarkia.online/webhook-test/registro-paciente";
+const WHATSAPP_NUMBER = "573001234567"; // Cambiar por el número real de la clínica
+---
+
+<section id="registro" class={isCompact ? "" : "py-16 px-4 bg-white"}>
+  <div class={isCompact ? "" : "max-w-2xl mx-auto"}>
+    {showHeading && (
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          Comienza tu Transformación
+        </h2>
+        <p class="text-lg text-gray-600">
+          Completa el formulario y recibe tu cotización personalizada
+        </p>
+      </div>
+    )}
+
+    <form id="registroForm" class={`space-y-4 ${isCompact ? 'bg-white/95 p-6' : 'bg-gray-50 p-8'} rounded-2xl shadow-xl border border-gray-100`}>
+      {isCompact && (
+        <div class="mb-4">
+          <h3 class="text-xl font-bold text-gray-900">Agenda tu Valoración</h3>
+          <p class="text-sm text-gray-600">Cupos limitados para esta semana</p>
+        </div>
+      )}
+      
+      <div class="grid grid-cols-1 gap-4">
+        <!-- Nombre -->
+        <div>
+          <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+            Nombre completo
+          </label>
+          <input
+            type="text"
+            id="nombre"
+            name="nombre"
+            required
+            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-sm"
+            placeholder="Tu nombre completo"
+          />
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+            Correo electrónico
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-sm"
+            placeholder="tu@email.com"
+          />
+        </div>
+
+        <!-- WhatsApp -->
+        <div>
+          <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">
+            Número de WhatsApp
+          </label>
+          <div class="flex">
+            <span class="inline-flex items-center px-3 bg-gray-100 border border-r-0 border-gray-300 rounded-l-lg text-gray-600 text-sm font-medium">
+              +57
+            </span>
+            <input
+              type="tel"
+              id="whatsapp"
+              name="whatsapp"
+              required
+              pattern="[0-9]{10}"
+              maxlength="10"
+              class="flex-1 px-4 py-2.5 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-sm"
+              placeholder="3001234567"
+            />
+          </div>
+        </div>
+
+        <!-- Tratamiento -->
+        <div>
+          <label for="tratamiento" class="block text-sm font-medium text-gray-700 mb-1">
+            Tratamiento de interés
+          </label>
+          <select
+            id="tratamiento"
+            name="tratamiento"
+            required
+            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition bg-white text-sm"
+          >
+            <option value="">Selecciona un tratamiento</option>
+            <option value="Blanqueamiento dental">Blanqueamiento dental</option>
+            <option value="Ortodoncia invisible">Ortodoncia invisible</option>
+            <option value="Implantes dentales">Implantes dentales</option>
+            <option value="Diseño de sonrisa">Diseño de sonrisa</option>
+            <option value="Limpieza profunda">Limpieza profunda</option>
+            <option value="Valoración general">Valoración general</option>
+          </select>
+        </div>
+
+        <!-- Foto -->
+        <div>
+          <label for="foto" class="block text-sm font-medium text-gray-700 mb-1">
+            Foto de tu sonrisa <span class="text-xs text-gray-500 font-normal">(Opcional)</span>
+          </label>
+          <div class="relative group cursor-pointer border border-dashed border-gray-300 rounded-lg p-3 hover:border-primary-400 transition bg-white">
+            <input
+              id="foto"
+              name="foto"
+              type="file"
+              accept="image/jpeg,image/png,image/jpg"
+              class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+            />
+            <div class="flex items-center gap-3">
+              <svg class="h-6 w-6 text-gray-400 group-hover:text-primary-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span id="fileName" class="text-sm text-gray-500 truncate">Sube una foto de tu sonrisa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón submit -->
+      <button
+        type="submit"
+        id="submitBtn"
+        class="w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-bold text-base hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary-600/20 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+      >
+        ¡Quiero mi cotización gratis!
+      </button>
+
+      <p class="text-[10px] text-center text-gray-500 mt-2">
+        🔒 Tus datos están protegidos y solo se usarán para tu cotización.
+      </p>
+    </form>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="hidden mt-8 bg-green-50 border border-green-200 rounded-2xl p-8 text-center animate-in fade-in zoom-in duration-300">
+      <div class="mb-4">
+        <svg class="mx-auto h-12 w-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="text-xl font-bold text-gray-900 mb-2">¡Todo listo, <span id="successNombre"></span>!</h3>
+      <p class="text-sm text-gray-600 mb-6">Hemos recibido tus datos correctamente.</p>
+      <a
+        id="whatsappBtn"
+        href="#"
+        target="_blank"
+        class="inline-flex items-center gap-2 bg-green-500 text-white py-3 px-6 rounded-lg font-bold text-base hover:bg-green-600 transition transform hover:scale-105"
+      >
+        Hablar por WhatsApp ahora
+      </a>
+    </div>
+
+    <!-- Error Message -->
+    <div id="errorMessage" class="hidden mt-4 bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
+      <p class="text-red-600 text-sm font-medium">Algo salió mal. Por favor, intenta de nuevo.</p>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ WEBHOOK_URL, WHATSAPP_NUMBER }}>
+  const form = document.getElementById('registroForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const successMessage = document.getElementById('successMessage');
+  const errorMessage = document.getElementById('errorMessage');
+  const fotoInput = document.getElementById('foto');
+  const fileName = document.getElementById('fileName');
+
+  fotoInput?.addEventListener('change', (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      if (fileName) fileName.textContent = file.name;
+      if (file.size > 2097152) { // 2MB
+        alert('La imagen es muy pesada. Máximo 2MB.');
+        fotoInput.value = '';
+        if (fileName) fileName.textContent = 'Sube una foto de tu sonrisa';
+      }
+    }
+  });
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="flex items-center justify-center"><svg class="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg> Procesando...</span>';
+    
+    try {
+      const formData = new FormData(form);
+      const nombre = formData.get('nombre');
+      const email = formData.get('email');
+      const whatsapp = '+57' + formData.get('whatsapp');
+      const tratamiento = formData.get('tratamiento');
+      const fotoFile = formData.get('foto');
+
+      let base64 = "";
+      if (fotoFile && fotoFile.size > 0) {
+        base64 = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.readAsDataURL(fotoFile);
+        });
+      }
+
+      await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre, email, whatsapp, tratamiento, imagen: base64 })
+      });
+
+      form.classList.add('hidden');
+      successMessage.classList.remove('hidden');
+      document.getElementById('successNombre').textContent = nombre;
+
+      const mensaje = `Hola! Soy ${nombre} y quiero una cotización para ${tratamiento}.`;
+      document.getElementById('whatsappBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+      successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    } catch (error) {
+      console.error(error);
+      errorMessage.classList.remove('hidden');
+      submitBtn.disabled = false;
+      submitBtn.textContent = '¡Quiero mi cotización gratis!';
+    }
+  });
+</script>
