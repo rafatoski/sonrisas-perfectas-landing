@@ -36,7 +36,7 @@ import FormularioRegistro from '../components/FormularioRegistro.astro';
             <div class="relative">
               <div class="absolute -inset-1 bg-gradient-to-r from-primary-400 to-indigo-500 rounded-3xl blur opacity-25"></div>
               <div class="relative">
-                <FormularioRegistro isCompact={true} showHeading={false} />
+                <FormularioRegistro isCompact={true} showHeading={false} id="registro-mobile" />
               </div>
             </div>
           </div>
@@ -97,11 +97,10 @@ import FormularioRegistro from '../components/FormularioRegistro.astro';
           </div>
         </div>
 
-        <!-- Columna 2: Formulario (Desktop) -->
         <div class="hidden lg:block relative lg:ml-auto w-full max-w-md order-2 lg:order-2">
           <div class="absolute -inset-1 bg-gradient-to-r from-primary-400 to-indigo-500 rounded-3xl blur opacity-25"></div>
           <div class="relative">
-            <FormularioRegistro isCompact={true} showHeading={false} />
+            <FormularioRegistro isCompact={true} showHeading={false} id="registro" />
           </div>
         </div>
       </div>
@@ -185,4 +184,36 @@ import FormularioRegistro from '../components/FormularioRegistro.astro';
       </div>
     </div>
   </footer>
+  <script>
+    // Robust Smooth Scroll Implementation
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (e) => {
+        e.preventDefault();
+        const currentAnchor = e.currentTarget as HTMLAnchorElement;
+        const targetId = currentAnchor.getAttribute('href');
+        if (!targetId || targetId === '#') return;
+        
+        // If searching for #registro, check if it's hidden (Mobile vs Desktop)
+        let targetElement = document.querySelector(targetId) as HTMLElement;
+        
+        if (targetId === '#registro' && window.innerWidth < 1024) {
+          const mobileTarget = document.querySelector('#registro-mobile') as HTMLElement;
+          if (mobileTarget) targetElement = mobileTarget;
+        }
+        
+        if (targetElement) {
+          const headerOffset = 20; // Extra padding
+          const elementPosition = targetElement.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+
+          history.pushState(null, '', targetId);
+        }
+      });
+    });
+  </script>
 </Layout>

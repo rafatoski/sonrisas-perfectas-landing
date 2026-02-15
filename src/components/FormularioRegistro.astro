@@ -2,14 +2,15 @@
 interface Props {
   isCompact?: boolean;
   showHeading?: boolean;
+  id?: string;
 }
 
-const { isCompact = false, showHeading = true } = Astro.props;
+const { isCompact = false, showHeading = true, id = "registro" } = Astro.props;
 const WEBHOOK_URL = "https://n8ntest.neuromarkia.online/webhook-test/registro-paciente";
 const WHATSAPP_NUMBER = "573001234567"; // Cambiar por el número real de la clínica
 ---
 
-<section id="registro" class={isCompact ? "" : "py-16 px-4 bg-white"}>
+<section id={id} class={isCompact ? "" : "py-16 px-4 bg-white"}>
   <div class={isCompact ? "" : "max-w-2xl mx-auto"}>
     {showHeading && (
       <div class="text-center mb-12">
