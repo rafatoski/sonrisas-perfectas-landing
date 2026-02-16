@@ -10,31 +10,37 @@ const WEBHOOK_URL = "https://n8ntest.neuromarkia.online/webhook-test/registro-pa
 const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la clínica
 ---
 
-<section id={id} class={isCompact ? "" : "py-16 px-4 bg-white"}>
-  <div class={isCompact ? "" : "max-w-2xl mx-auto"}>
+<section id={id} class={isCompact ? "" : "py-32 px-4 bg-navy-950 relative overflow-hidden"}>
+  {!isCompact && (
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[70%] h-[70%] bg-primary-600/5 rounded-full blur-[120px]"></div>
+    </div>
+  )}
+
+  <div class={isCompact ? "" : "max-w-xl mx-auto relative z-10"}>
     {showHeading && (
-      <div class="text-center mb-12">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          Comienza tu Transformación
+      <div class="text-center mb-16 space-y-4">
+        <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight">
+          Comienza tu <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-indigo-400">Transformación</span>
         </h2>
-        <p class="text-lg text-gray-600">
-          Completa el formulario y recibe tu cotización personalizada
+        <p class="text-xl text-gray-400 font-medium">
+          Completa el formulario y recibe tu cotización personalizada.
         </p>
       </div>
     )}
 
-    <form id="registroForm" class={`space-y-4 ${isCompact ? 'bg-white/95 p-6' : 'bg-gray-50 p-8'} rounded-2xl shadow-xl border border-gray-100`}>
+    <form id="registroForm" class={`space-y-5 ${isCompact ? 'bg-white p-4' : 'bg-white p-10'} rounded-[1rem] shadow-[0_20px_60px_rgba(0,0,0,0.15)] ring-1 ring-black/5`}>
       {isCompact && (
-        <div class="mb-4">
-          <h3 class="text-xl font-bold text-gray-900">Agenda tu Valoración</h3>
-          <p class="text-sm text-gray-600">Cupos limitados para esta semana</p>
+        <div class="mb-8 space-y-1">
+          <h3 class="text-2xl font-black text-black tracking-tight">Agenda tu Valoración</h3>
+          <p class="text-sm text-black/50 font-medium">Cupos limitados para esta semana</p>
         </div>
       )}
       
-      <div class="grid grid-cols-1 gap-4">
+      <div class="grid grid-cols-1 gap-5">
         <!-- Nombre -->
-        <div>
-          <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="space-y-1.5">
+          <label for="nombre" class="block text-xs font-bold text-black/60 ml-1">
             Nombre completo
           </label>
           <input
@@ -42,14 +48,14 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
             id="nombre"
             name="nombre"
             required
-            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-sm"
-            placeholder="Tu nombre completo"
+            class="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-black/10 focus:border-black/20 transition-all outline-none text-black placeholder:text-black/30 font-base bg-white text-gray-900 placeholder:text-gray-400"
+            placeholder="Ej: Juan Pérez"
           />
         </div>
 
         <!-- Email -->
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="space-y-1.5">
+          <label for="email" class="block text-xs font-bold text-black/60 ml-1">
             Correo electrónico
           </label>
           <input
@@ -57,18 +63,18 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
             id="email"
             name="email"
             required
-            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-sm"
+            class="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-black/10 focus:border-black/20 transition-all outline-none text-black placeholder:text-black/30 font-base bg-white text-gray-900 placeholder:text-gray-400"
             placeholder="tu@email.com"
           />
         </div>
 
         <!-- WhatsApp -->
-        <div>
-          <label for="whatsapp" class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="space-y-1.5">
+          <label for="whatsapp" class="block text-xs font-bold text-black/60 ml-1">
             Número de WhatsApp
           </label>
-          <div class="flex">
-            <span class="inline-flex items-center px-3 bg-gray-100 border border-r-0 border-gray-300 rounded-l-lg text-gray-600 text-sm font-medium">
+          <div class="flex group">
+            <span class="inline-flex items-center px-4 bg-gray-100 border border-r-0 border-gray-200 rounded-l-2xl text-black/50 text-sm font-base tracking-wider">
               +57
             </span>
             <input
@@ -78,39 +84,46 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
               required
               pattern="[0-9]{10}"
               maxlength="10"
-              class="flex-1 px-4 py-2.5 border border-gray-300 rounded-r-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition text-sm"
+              class="flex-1 px-5 py-4 bg-gray-50 border border-gray-100 rounded-r-2xl focus:ring-2 focus:ring-black/10 focus:border-black/20 transition-all outline-none font-base placeholder:text-black/30 bg-white text-gray-900 placeholder:text-gray-400"
               placeholder="3001234567"
             />
           </div>
         </div>
 
         <!-- Tratamiento -->
-        <div>
-          <label for="tratamiento" class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="space-y-1.5">
+          <label for="tratamiento" class="block text-xs font-bold text-black/60 ml-1">
             Tratamiento de interés
           </label>
-          <select
-            id="tratamiento"
-            name="tratamiento"
-            required
-            class="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition bg-white text-sm"
-          >
-            <option value="">Selecciona un tratamiento</option>
-            <option value="Blanqueamiento dental">Blanqueamiento dental</option>
-            <option value="Ortodoncia invisible">Ortodoncia invisible</option>
-            <option value="Implantes dentales">Implantes dentales</option>
-            <option value="Diseño de sonrisa">Diseño de sonrisa</option>
-            <option value="Limpieza profunda">Limpieza profunda</option>
-            <option value="Valoración general">Valoración general</option>
-          </select>
+          <div class="relative">
+            <select
+              id="tratamiento"
+              name="tratamiento"
+              required
+              class="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-black/10 focus:border-black/20 transition-all outline-none text-black appearance-none cursor-pointer font-semibold bg-white text-gray-900 placeholder:text-gray-400"
+            >
+              <option value="" class="bg-white">Selecciona un tratamiento</option>
+              <option value="Blanqueamiento dental" class="bg-white">Blanqueamiento dental</option>
+              <option value="Ortodoncia invisible" class="bg-white">Ortodoncia invisible</option>
+              <option value="Implantes dentales" class="bg-white">Implantes dentales</option>
+              <option value="Diseño de sonrisa" class="bg-white">Diseño de sonrisa</option>
+              <option value="Limpieza profunda" class="bg-white">Limpieza profunda</option>
+              <option value="Valoración general" class="bg-white">Valoración general</option>
+            </select>
+            <div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+              <svg class="h-4 w-4 text-black/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </div>
 
         <!-- Foto -->
-        <div>
-          <label for="foto" class="block text-sm font-medium text-gray-700 mb-1">
-            Foto de tu sonrisa <span class="text-xs text-gray-500 font-normal">(Opcional)</span>
+        <div class="space-y-1.5">
+          <label for="foto" class="block text-xs font-bold text-black/60 ml-1">
+            Foto de tu sonrisa <span class="text-[10px] font-normal opacity-40">(Opcional)</span>
           </label>
-          <div class="relative group cursor-pointer border border-dashed border-gray-300 rounded-lg p-3 hover:border-primary-400 transition bg-white">
+          <div class="relative group cursor-pointer border border-dashed border-gray-200 rounded-2xl p-4 hover:border-black/20 hover:bg-gray-50 transition-all bg-white text-gray-900 placeholder:text-gray-400">
             <input
               id="foto"
               name="foto"
@@ -118,12 +131,12 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
               accept="image/jpeg,image/png,image/jpg"
               class="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <div class="flex items-center gap-3">
-              <svg class="h-6 w-6 text-gray-400 group-hover:text-primary-500 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="flex items-center justify-center gap-3">
+              <svg class="h-6 w-6 text-black/20 group-hover:text-black/40 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span id="fileName" class="text-sm text-gray-500 truncate">Sube una foto de tu sonrisa</span>
+              <span id="fileName" class="text-xs font-bold text-black/40 truncate group-hover:text-black/60">Subir foto</span>
             </div>
           </div>
         </div>
@@ -133,41 +146,48 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
       <button
         type="submit"
         id="submitBtn"
-        class="w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-bold text-base hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-primary-600/20 disabled:opacity-50 disabled:cursor-not-allowed mt-4"
+        class="group relative w-full bg-sky-500 text-white py-5 px-1 rounded-full font-black  text-base text-start transition-all hover:bg-sky-500 hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_20px_rgba(2,132,199,0.3)] hover:shadow-[0_0_35px_rgba(2,132,199,0.8)] disabled:opacity-50 disabled:cursor-not-allowed mt-2 overflow-hidden uppercase tracking-widest flex items-center justify-center gap-0"
       >
-        ¡Quiero mi cotización gratis!
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        </svg>
+        ¡QUIERO MI COTIZACIÓN!
+        <div class="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
       </button>
 
-      <p class="text-[10px] text-center text-gray-500 mt-2">
+      <p class="text-[10px] text-center text-black/40 mt-4 font-bold leading-relaxed px-4">
         🔒 Tus datos están protegidos y solo se usarán para tu cotización.
       </p>
     </form>
 
     <!-- Success Message -->
-    <div id="successMessage" class="hidden mt-8 bg-green-50 border border-green-200 rounded-2xl p-8 text-center animate-in fade-in zoom-in duration-300">
-      <div class="mb-4">
-        <svg class="mx-auto h-12 w-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
+    <div id="successMessage" class="hidden mt-12 bg-white/[0.03] border border-primary-500/20 rounded-3xl p-12 text-center animate-reveal">
+      <div class="mb-8">
+        <div class="w-20 h-20 bg-primary-500 rounded-full flex items-center justify-center mx-auto shadow-[0_0_30px_rgba(14,165,233,0.4)]">
+          <svg class="h-10 w-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
       </div>
-      <h3 class="text-xl font-bold text-gray-900 mb-2">¡Todo listo, <span id="successNombre"></span>!</h3>
-      <p class="text-sm text-gray-600 mb-6">Hemos recibido tus datos correctamente.</p>
+      <h3 class="text-3xl font-black text-white mb-4 tracking-tight">¡Todo listo, <span id="successNombre"></span>!</h3>
+      <p class="text-lg text-gray-400 font-medium mb-10">Tu solicitud ha sido procesada con éxito. Nuestro equipo te contactará en breve.</p>
       <a
         id="whatsappBtn"
         href="#"
         target="_blank"
-        class="inline-flex items-center gap-2 bg-green-500 text-white py-3 px-6 rounded-lg font-bold text-base hover:bg-green-600 transition transform hover:scale-105"
+        class="inline-flex items-center gap-3 bg-green-500 text-white py-4 px-10 rounded-full font-black text-lg hover:bg-green-400 transition transform hover:scale-105 shadow-[0_0_25px_rgba(34,197,94,0.3)]"
       >
         Hablar por WhatsApp ahora
       </a>
     </div>
 
     <!-- Error Message -->
-    <div id="errorMessage" class="hidden mt-4 bg-red-50 border border-red-200 rounded-2xl p-4 text-center">
-      <p class="text-red-600 text-sm font-medium">Algo salió mal. Por favor, intenta de nuevo.</p>
+    <div id="errorMessage" class="hidden mt-6 bg-red-500/10 border border-red-500/20 rounded-2xl p-4 text-center">
+      <p class="text-red-400 text-sm font-bold">Algo salió mal. Por favor, intenta de nuevo.</p>
     </div>
   </div>
 </section>
+
 
 <script define:vars={{ WEBHOOK_URL, WHATSAPP_NUMBER }}>
   const form = document.getElementById('registroForm');

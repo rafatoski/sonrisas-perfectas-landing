@@ -1,186 +1,167 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import HeroTrust from '../components/HeroTrust.astro';
 import FormularioRegistro from '../components/FormularioRegistro.astro';
 ---
 
 <Layout title="Sonrisas Perfectas | Clínica Odontológica en Cali">
   <!-- Hero Section -->
-  <section class="relative bg-[#075985] overflow-hidden">
-    <!-- Efectos de fondo y Corte -->
-    <div class="absolute inset-0">
-      <div class="absolute inset-0 opacity-10">
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-white rounded-full mix-blend-multiply filter blur-3xl"></div>
-        <div class="absolute bottom-0 -right-4 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl"></div>
+  <section class="relative min-h-[95vh] flex items-start overflow-hidden bg-[#001c3d] px-4 pt-12 pb-24 lg:pt-32 lg:pb-40">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none bg-[radial-gradient(circle_at_center,_#003c7d_0%,_#001c3d_70%,_#000a1a_100%)]">
+      <!-- Light Rays -->
+      <div class="absolute inset-0 opacity-30">
+        <div class="absolute top-[-20%] left-[10%] w-[150%] h-[150%] bg-gradient-to-b from-sky-400/30 via-transparent to-transparent rotate-12 blur-[100px] animate-water-ray"></div>
+        <div class="absolute top-[-10%] left-[-20%] w-[150%] h-[150%] bg-gradient-to-b from-cyan-400/20 via-transparent to-transparent -rotate-12 blur-[100px] animate-water-ray [animation-delay:-4s]"></div>
       </div>
-      <!-- Fondo Cortado (Decorative Shape) -->
-      <div class="absolute bottom-0 left-0 right-0 h-16 bg-white" style="clip-path: polygon(0 100%, 100% 100%, 100% 0);"></div>
+      
+      <!-- Subtle Texture Shimmer -->
+      <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/p6.png')] animate-shimmer"></div>
     </div>
 
-    <div class="relative max-w-7xl mx-auto px-4 pt-12 pb-20 md:py-24 lg:py-32">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <!-- Contenedor Principal Lado Izquierdo (Título y Beneficios) -->
-        <div class="text-white space-y-8 order-1 lg:order-1">
-          <div class="text-center lg:text-left flex flex-col items-center lg:items-start">
-            <!-- Logo Integrado en Hero -->
-            <img src="/images/Logo-SonrisasPerfectas.png" alt="Logo Sonrisas Perfectas" class="h-24 w-auto mb-4 drop-shadow-xl">
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-[1.1] tracking-tight mb-6">
-              La Sonrisa de tus <span class="text-primary-300">Sueños</span> es Posible
+    <!-- Diagonal Divider -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
+      <svg class="relative block w-full h-[60px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M1200 120L0 0v120z" class="fill-white"></path>
+      </svg>
+    </div>
+
+    <div class="relative max-w-7xl mx-auto w-full z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+        <!-- Content Column (Left) -->
+        <div class="space-y-8 text-center lg:text-left animate-reveal mt-0 lg:mt-4">
+          <div class="space-y-4">
+            <!-- Badge Style Logo/Indicator -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-300 text-[10px] font-semibold tracking-wider uppercase">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-500"></span>
+              </span>
+              Nueva Sede en Cali
+            </div>
+            
+            <img src="/images/Logo-SonrisasPerfectas.png" alt="Logo Sonrisas Perfectas" class="h-12 md:h-16 w-auto mx-auto lg:mx-0">
+            
+            <h1 class="text-4xl md:text-6xl lg:text-5xl font-black leading-[1.05] tracking-tight text-white">
+              La Sonrisa de tus <br class="hidden lg:block" /><span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-300 to-cyan-300">Sueños</span> es Posible
             </h1>
-            <p class="text-lg md:text-2xl text-primary-100 max-w-xl lg:mx-0 mx-auto leading-relaxed">
-              Recupera tu seguridad con tratamientos personalizados y tecnología de última generación. <strong>Primera valoración sin costo.</strong>
+            
+            <p class="text-base md:text-xl text-sky-200 max-w-xl mx-auto lg:mx-0 font-medium leading-relaxed">
+              Tratamientos personalizados con tecnología avanzada para recuperar tu seguridad.
             </p>
-          </div>
 
-          <!-- Formulario en Mobile (Visible antes de los beneficios) -->
-          <div class="lg:hidden w-full max-w-md mx-auto order-2">
-            <div class="relative">
-              <div class="absolute -inset-1 bg-gradient-to-r from-primary-400 to-indigo-500 rounded-3xl blur opacity-25"></div>
-              <div class="relative">
-                <FormularioRegistro isCompact={true} showHeading={false} id="registro-mobile" />
-              </div>
-            </div>
-          </div>
-
-          <!-- Beneficios (Se muestran debajo del formulario en mobile) -->
-          <div class="flex flex-col gap-4 order-3 lg:order-none">
-            <div class="flex items-center gap-3">
-              <div class="flex-shrink-0 w-6 h-6 bg-primary-400/20 rounded-full flex items-center justify-center">
-                <svg class="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <span class="text-base md:text-lg">Diseño de Sonrisa 100% Personalizado</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="flex-shrink-0 w-6 h-6 bg-primary-400/20 rounded-full flex items-center justify-center">
-                <svg class="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <span class="text-base md:text-lg">Financiamiento Flexible y Planes de Pago</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="flex-shrink-0 w-6 h-6 bg-primary-400/20 rounded-full flex items-center justify-center">
-                <svg class="w-4 h-4 text-primary-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <span class="text-base md:text-lg">Especialistas con +15 Años de Experiencia</span>
-            </div>
-          </div>
-
-          <!-- Social Proof Pequeño -->
-          <div class="pt-4 flex items-center justify-center lg:justify-start gap-4 order-4 lg:order-none">
-            <div class="flex -space-x-3">
-              <div class="w-12 h-12 rounded-full border-2 border-white bg-gray-200 overflow-hidden shadow-sm">
-                <img src="/avatars/avatar1.png" alt="Paciente satisfecho" class="w-full h-full object-cover">
-              </div>
-              <div class="w-12 h-12 rounded-full border-2 border-white bg-gray-300 overflow-hidden shadow-sm">
-                <img src="/avatars/avatar2.png" alt="Paciente satisfecha" class="w-full h-full object-cover">
-              </div>
-              <div class="w-12 h-12 rounded-full border-2 border-white bg-gray-400 overflow-hidden shadow-sm">
-                <img src="/avatars/avatar3.png" alt="Paciente de la clínica" class="w-full h-full object-cover">
-              </div>
-            </div>
-            <div class="flex flex-col">
-              <div class="flex text-yellow-400">
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-                <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path></svg>
-              </div>
-              <p class="text-sm text-primary-100 italic font-medium">
-                "+500 pacientes felices en Cali"
-              </p>
+            <!-- Hero Trust Elements (Desktop) -->
+            <div class="hidden lg:block">
+              <HeroTrust />
             </div>
           </div>
         </div>
 
-        <div class="hidden lg:block relative lg:ml-auto w-full max-w-md order-2 lg:order-2">
-          <div class="absolute -inset-1 bg-gradient-to-r from-primary-400 to-indigo-500 rounded-3xl blur opacity-25"></div>
-          <div class="relative">
-            <FormularioRegistro isCompact={true} showHeading={false} id="registro" />
+        <!-- Form Column (Right) -->
+        <div class="relative animate-reveal">
+          <div class="absolute -inset-4 bg-primary-500/10 rounded-[2.5rem] blur-2xl opacity-50"></div>
+          <FormularioRegistro isCompact={true} showHeading={false} id="hero-form" />
+          
+          <!-- Hero Trust Elements (Mobile) -->
+          <div class="lg:hidden">
+            <HeroTrust />
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Tratamientos Section -->
-  <section id="tratamientos" class="py-24 px-4 bg-white">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
-          Nuestros Tratamientos
+  <section id="tratamientos" class="py-32 px-4 bg-white text-black relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-blue-50 rounded-full blur-[120px] pointer-events-none opacity-50"></div>
+    
+    <div class="max-w-7xl mx-auto relative">
+      <div class="text-center mb-20 space-y-4">
+        <h2 class="text-4xl md:text-5xl text-black font-black tracking-tight">
+          Nuestros <span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-sky-400">Tratamientos</span>
         </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-          Resultados naturales con tecnología de punta y el mejor equipo médico.
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto font-medium">
+          Resultados naturales con tecnología de punta y el mejor equipo médico en Cali.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Blanqueamiento -->
-        <div class="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-primary-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
-          <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-600 group-hover:rotate-6 transition-all duration-300">
-            <svg class="w-8 h-8 text-primary-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="group bg-gray-50/50 border border-gray-10 p-10 rounded-3xl hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 hover:border-blue-200 transition-all duration-500 hover:-translate-y-2">
+          <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-500 shadow-sm">
+            <svg class="w-7 h-7 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">Blanqueamiento</h3>
-          <p class="text-gray-600 leading-relaxed">Recupera el brillo de tus dientes con resultados visibles desde la primera sesión.</p>
+          <h3 class="text-2xl font-bold text-navy-950 mb-4">Blanqueamiento</h3>
+          <p class="text-gray-500 leading-relaxed font-medium">Recupera el brillo de tus dientes con resultados visibles desde la primera sesión.</p>
         </div>
 
         <!-- Ortodoncia -->
-        <div class="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-primary-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
-          <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-600 group-hover:rotate-6 transition-all duration-300">
-            <svg class="w-8 h-8 text-primary-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="group bg-gray-50/50 border border-gray-10 p-10 rounded-3xl hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 hover:border-blue-200 transition-all duration-500 hover:-translate-y-2">
+          <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-500 shadow-sm">
+            <svg class="w-7 h-7 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">Invisalign</h3>
-          <p class="text-gray-600 leading-relaxed">Alinea tu sonrisa de forma invisible, rápida y sin brackets convencionales.</p>
+          <h3 class="text-2xl font-bold text-navy-950 mb-4">Invisalign</h3>
+          <p class="text-gray-500 leading-relaxed font-medium">Alinea tu sonrisa de forma invisible, rápida y sin brackets convencionales.</p>
         </div>
 
         <!-- Implantes -->
-        <div class="group bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:border-primary-200 hover:bg-white hover:shadow-2xl transition-all duration-300">
-          <div class="w-16 h-16 bg-primary-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-600 group-hover:rotate-6 transition-all duration-300">
-            <svg class="w-8 h-8 text-primary-600 group-hover:text-white transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div class="group bg-gray-50/50 border border-gray-10 p-10 rounded-3xl hover:bg-white hover:shadow-2xl hover:shadow-blue-900/5 hover:border-blue-200 transition-all duration-500 hover:-translate-y-2">
+          <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:scale-110 transition-all duration-500 shadow-sm">
+            <svg class="w-7 h-7 text-blue-600 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
             </svg>
           </div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-3">Implantes</h3>
-          <p class="text-gray-600 leading-relaxed">Soluciones permanentes para recuperar la funcionalidad y estética completa.</p>
+          <h3 class="text-2xl font-bold text-navy-950 mb-4">Implantes</h3>
+          <p class="text-gray-500 leading-relaxed font-medium">Soluciones permanentes para recuperar la funcionalidad y estética completa.</p>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- CTA Section -->
-  <section class="py-20 bg-primary-600">
-    <div class="max-w-4xl mx-auto px-4 text-center text-white">
-      <h2 class="text-3xl md:text-5xl font-bold mb-8 italic">"La sonrisa es la curva que todo lo endereza"</h2>
-      <a href="#registro" class="inline-block bg-white text-primary-700 px-10 py-5 rounded-full font-black text-xl hover:bg-primary-50 transition transform hover:-translate-y-1 shadow-2xl">
-        ¡QUIERO AGENDAR MI CITA YA!
+  <section class="py-24 bg-sky-50 relative overflow-hidden">
+    <div class="absolute inset-0 pointer-events-none opacity-20">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] bg-sky-200 rounded-full blur-[100px]"></div>
+    </div>
+    
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 space-y-10">
+      <h2 class="text-2xl md:text-4xl font-black text-slate-900 tracking-tight leading-tight uppercase">
+        La sonrisa es la curva que <br /><span class="bg-clip-text text-transparent bg-gradient-to-r from-sky-600 to-indigo-600">todo lo endereza</span>
+      </h2>
+      <a href="#registro" class="group relative inline-flex items-center gap-3 px-12 py-5 bg-sky-600 text-white rounded-full font-black text-sm transition-all hover:bg-sky-500 hover:scale-105 active:scale-95 shadow-[0_15px_30px_rgba(2,132,199,0.3)] hover:shadow-[0_0_35px_rgba(2,132,199,0.7)] uppercase tracking-widest">
+        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2-2v12a2 2 0 002 2z" />
+        </svg>
+        AGENDAR CITA AHORA!
+        <div class="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
       </a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-16 px-4 border-t border-gray-800">
-    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div class="text-center md:text-left space-y-4">
+  <footer class="bg-navy-950 text-white py-24 px-4 border-t border-white/5 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center relative z-10">
+      <div class="text-center md:text-left space-y-6">
         <img src="/images/Logo-SonrisasPerfectas.png" alt="Sonrisas Perfectas Logo" class="h-16 w-auto mx-auto md:mx-0">
-        <p class="text-gray-400 max-w-sm">Transformando vidas una sonrisa a la vez con tecnología de vanguardia en Cali.</p>
-      </div>
-      <div class="text-center md:text-right">
-        <div class="flex justify-center md:justify-end gap-6 mb-6">
-          <a href="#tratamientos" class="text-gray-400 hover:text-white transition">Tratamientos</a>
-          <a href="#registro" class="text-gray-400 hover:text-white transition">Contacto</a>
-        </div>
-        <p class="text-gray-400 text-sm">
-          © 2026 Cali, Colombia | Clínica Dental Especializada
+        <p class="text-gray-500 max-w-sm font-medium leading-relaxed">
+          Transformando vidas una sonrisa a la vez con tecnología de vanguardia y especialistas de élite en Cali.
         </p>
+      </div>
+      <div class="text-center md:text-right space-y-8">
+        <div class="flex justify-center md:justify-end gap-10 font-bold uppercase tracking-widest text-xs">
+          <a href="#tratamientos" class="text-primary-400 hover:text-white transition-colors">Tratamientos</a>
+          <a href="#registro" class="text-primary-400 hover:text-white transition-colors">Contacto</a>
+          <a href="#" class="text-primary-400 hover:text-white transition-colors">Privacidad</a>
+        </div>
+        <div class="pt-8 border-t border-white/5">
+          <p class="text-gray-600 text-[10px] font-bold uppercase tracking-[0.2em]">
+            © 2026 Cali, Colombia • Sonrisas Perfectas S.A.S
+          </p>
+        </div>
       </div>
     </div>
   </footer>
