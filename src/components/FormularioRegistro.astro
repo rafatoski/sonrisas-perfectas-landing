@@ -249,8 +249,8 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
       successMessage.classList.remove('hidden');
       document.getElementById('successNombre').textContent = nombre;
 
-      const mensaje = `Hola! Soy ${nombre} y quiero una cotización para ${tratamiento}.`;
-      document.getElementById('whatsappBtn').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+      const mensaje = `Hola! Soy ${nombre} y me gustaría recibir una cotización para el tratamiento de ${tratamiento}.`;
+      document.getElementById('whatsappBtn').href = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(mensaje)}`;
       successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
     } catch (error) {
