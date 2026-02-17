@@ -121,7 +121,7 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
         <!-- Foto -->
         <div class="space-y-1.5">
           <label for="foto" class="block text-xs font-bold text-black/60 ml-1">
-            Foto de tu sonrisa <span class="text-[10px] font-normal opacity-40">(Opcional)</span>
+            Foto de tu sonrisa <span class="text-[10px] font-normal opacity-40">(Opcional: JPG o PNG, máximo 1MB)</span>
           </label>
           <div class="relative group cursor-pointer border border-dashed border-gray-200 rounded-2xl p-4 hover:border-black/20 hover:bg-gray-50 transition-all bg-white text-gray-900 placeholder:text-gray-400">
             <input
@@ -136,7 +136,7 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
-              <span id="fileName" class="text-xs font-bold text-black/40 truncate group-hover:text-black/60">Subir foto</span>
+              <span id="fileName" class="text-xs font-bold text-black/40 truncate group-hover:text-black/60">Subir foto (Opcional)</span>
             </div>
           </div>
         </div>
@@ -155,7 +155,7 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
         <div class="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
       </button>
 
-      <p class="text-[10px] text-center text-black/40 mt-4 font-bold leading-relaxed px-4">
+      <p class="text-[10px] text-center text-black/70 mt-4 font-base leading-relaxed px-4">
         🔒 Tus datos están protegidos y solo se usarán para tu cotización.
       </p>
     </form>
@@ -201,10 +201,10 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
     const file = e.target.files?.[0];
     if (file) {
       if (fileName) fileName.textContent = file.name;
-      if (file.size > 2097152) { // 2MB
-        alert('La imagen es muy pesada. Máximo 2MB.');
+      if (file.size > 1048576) { // 1MB
+        alert('La imagen es muy pesada. Máximo 1MB.');
         fotoInput.value = '';
-        if (fileName) fileName.textContent = 'Sube una foto de tu sonrisa';
+        if (fileName) fileName.textContent = 'Subir foto (Opcional)';
       }
     }
   });
@@ -222,8 +222,16 @@ const WHATSAPP_NUMBER = "573180346087"; // Cambiar por el número real de la cl�
       const tratamiento = formData.get('tratamiento');
       const fotoFile = formData.get('foto');
 
-      let base64 = "";
+      let base64 = null;
       if (fotoFile && fotoFile.size > 0) {
+        // Validar tamaño por si acaso el change listener fue bypassado
+        if (fotoFile.size > 1048576) {
+          alert('La imagen es muy pesada. Máximo 1MB.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = '¡QUIERO MI COTIZACIÓN!';
+          return;
+        }
+
         base64 = await new Promise((resolve) => {
           const reader = new FileReader();
           reader.onload = () => resolve(reader.result);
